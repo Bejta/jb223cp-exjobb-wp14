@@ -201,9 +201,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Abstract\ICancellationWebService.cs" />
+    <Compile Include="Models\Abstract\IProvisioningWebService.cs" />
+    <Compile Include="Models\Abstract\IService.cs" />
+    <Compile Include="Models\Abstract\WebServiceBase.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DAL\Repository.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\Orderrow.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Webservices\CancellationWebService.cs" />
+    <Compile Include="Models\Webservices\ProvisioningWebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -270,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Webservices\APIFacade\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
