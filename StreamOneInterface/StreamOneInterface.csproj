@@ -204,6 +204,7 @@
     <Compile Include="Models\Abstract\ICancellationWebService.cs" />
     <Compile Include="Models\Abstract\IProvisioningWebService.cs" />
     <Compile Include="Models\Abstract\IService.cs" />
+    <Compile Include="Models\Abstract\ISettings.cs" />
     <Compile Include="Models\Abstract\WebServiceBase.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DAL\Repository.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Webservices\CancellationWebService.cs" />
     <Compile Include="Models\Webservices\ProvisioningWebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,6 +233,9 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\settings.json" />
+    <Content Include="App_Data\settingsdummy.json" />
+    <Content Include="App_Data\testorder.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -279,7 +284,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Models\Webservices\APIFacade\" />
   </ItemGroup>
   <ItemGroup>
