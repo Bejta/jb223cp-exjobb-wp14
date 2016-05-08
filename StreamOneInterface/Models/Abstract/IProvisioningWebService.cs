@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StreamOneInterface.Models.Abstract
 {
-    public interface IProvisioningWebService
+    public interface IProvisioningWebService : IDisposable
     {
     }
 }

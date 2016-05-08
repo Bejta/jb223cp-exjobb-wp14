@@ -236,6 +236,8 @@
     <Content Include="App_Data\settings.json" />
     <Content Include="App_Data\settingsdummy.json" />
     <Content Include="App_Data\testorder.json" />
+    <Content Include="App_Data\failedauthentiation.json" />
+    <Content Include="App_Data\success.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
