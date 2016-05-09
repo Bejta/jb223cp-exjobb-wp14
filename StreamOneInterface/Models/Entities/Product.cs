@@ -19,11 +19,11 @@ namespace StreamOneInterface.Models.Entities
 
         public bool Active { get; set; }
 
-        public virtual ICollection<Order> OrderRows { get; set; }
+        public virtual ICollection<OrderRow> OrderRows { get; set; }
 
         public Product()
         {
-            OrderRows = new HashSet<Order>();
+            OrderRows = new HashSet<OrderRow>();
         }
     }
 }

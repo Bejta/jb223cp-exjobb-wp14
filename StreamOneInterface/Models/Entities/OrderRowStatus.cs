@@ -11,11 +11,11 @@ namespace StreamOneInterface.Models.Entities
 
         public string RowStatus { get; set; }
 
-        public virtual ICollection<Order> OrderRows { get; set; }
+        public virtual ICollection<OrderRow> OrderRows { get; set; }
 
         public OrderRowStatus()
         {
-            OrderRows = new HashSet<Order>();
+            OrderRows = new HashSet<OrderRow>();
         }
     }
 }

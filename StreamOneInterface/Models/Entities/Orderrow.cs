@@ -10,6 +10,8 @@ namespace StreamOneInterface.Models.Entities
 
         public int Id { get; set; }
 
+        public int OrderRowStatus_Id { get; set; }
+
         public string item_id { get; set; }
 
         public int Product_Id { get; set; }

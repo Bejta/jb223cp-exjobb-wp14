@@ -21,6 +21,7 @@ namespace StreamOneInterface.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public virtual ICollection<Order> Orders { get; set; }
 
     }
 
@@ -38,6 +39,7 @@ namespace StreamOneInterface.Models
         public DbSet<OrderRowStatus> OrderRowStatus { get; set; }
         public DbSet<OrderStatus> OrderStatus { get; set; }
         public DbSet<OrderType> OrderTypes { get; set; }
+
 
         public static ApplicationDbContext Create()
         {
