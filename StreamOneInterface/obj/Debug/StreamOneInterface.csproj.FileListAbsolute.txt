@@ -80,3 +80,6 @@ C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\bin\Micr
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.csprojResolveAssemblyReference.cache
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.dll
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.pdb
+C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.InitialCreate.resources
+C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.csproj.GenerateResource.Cache
+C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.Addmigrations.resources

@@ -18,7 +18,7 @@ namespace StreamOneInterface.Models.Webservices
             string customerId;
             string itemId;
             string action;
-            string returnJSON ="";
+            string returnJSON = "";
 
 
             /* deserialize JSON data
@@ -53,7 +53,7 @@ namespace StreamOneInterface.Models.Webservices
                 /* Create associative array of status and pw to return
                  *  to the marketplace listener
                 **/
-                returnJSON= ReadJSONData("failedauthentication.json");
+                returnJSON = ReadJSONData("failedauthentication.json");
                 /*  Print out the failed json for marketplace listener
                 **/
                 Console.WriteLine(returnJSON);
@@ -66,3 +66,5 @@ namespace StreamOneInterface.Models.Webservices
                 return;
             }
         }
+    }
+}

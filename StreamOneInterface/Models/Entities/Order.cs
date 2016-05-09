@@ -7,5 +7,29 @@ namespace StreamOneInterface.Models.Entities
 {
     public class Order
     {
+
+        public int Id { get; set; }
+
+        public string User_Id { get; set; }
+
+        public string OrderStreamOne_Id { get; set; }
+
+        public string Listing_Id { get; set; }
+
+        public int Reseller_Id { get; set; }
+
+        public int OrderType_Id { get; set; }
+
+        public int OrderStatus_Id { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public virtual ICollection<OrderRow> OrderRows{ get; set; }
+
+        public Order()
+        {
+            OrderRows = new HashSet<OrderRow>();
+        }
+
     }
 }

@@ -3,6 +3,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using StreamOneInterface.Models.Entities;
 
 namespace StreamOneInterface.Models
 {
@@ -16,6 +21,7 @@ namespace StreamOneInterface.Models
             // Add custom user claims here
             return userIdentity;
         }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -24,6 +30,14 @@ namespace StreamOneInterface.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderRow> OrderRows { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Reseller> Resellers { get; set; }
+        public DbSet<OrderRowStatus> OrderRowStatus { get; set; }
+        public DbSet<OrderStatus> OrderStatus { get; set; }
+        public DbSet<OrderType> OrderTypes { get; set; }
 
         public static ApplicationDbContext Create()
         {
