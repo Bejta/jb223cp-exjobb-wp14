@@ -60,3 +60,4 @@ C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\bin\Syst
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\bin\System.Web.Http.xml
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\bin\System.Web.Http.WebHost.xml
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.Migration4.resources
+C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.Migration5.resources

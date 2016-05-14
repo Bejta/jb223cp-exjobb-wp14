@@ -46,6 +46,8 @@ namespace StreamOneInterface.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<StreamOneInterface.ViewModels.ProductViewModel> ProductViewModels { get; set; }
+
         // This line is not needed, as Database set for Users is already created in IdentityDBContext, and inherited in this class
         //public System.Data.Entity.DbSet<StreamOneInterface.Models.ApplicationUser> IdentityUsers { get; set; }
     }
