@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,26 +10,35 @@ namespace StreamOneInterface.Models.Entities
 {
     public class Order
     {
-
+        [Key]
         public int Id { get; set; }
 
-        //public string User_Id { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string UserID { get; set; }
 
-        public string OrderStreamOne_Id { get; set; }
+        public string OrderStreamOneID { get; set; }
 
-        public string Listing_Id { get; set; }
+        public string ListingID { get; set; }
 
-        //public int Reseller_Id { get; set; }
+        [ForeignKey("Reseller")]
+        public int ResellerID { get; set; }
 
-        //public int OrderType_Id { get; set; }
+        [ForeignKey("OrderType")]
+        public int OrderTypeID { get; set; }
 
-        //public int OrderStatus_Id { get; set; }
+        [Timestamp]
+        public Byte[] TimeStamp { get; set; }
 
+        [ForeignKey("OrderStatus")]
+        public int OrderStatusID { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
         public virtual ICollection<OrderRow> OrderRows{ get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual Reseller Reseller { get; set; }
 

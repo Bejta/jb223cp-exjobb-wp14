@@ -68,6 +68,10 @@ namespace StreamOneInterface.ViewModels
         {
             //Empty
         }
+        public string FullAddress
+        {
+            get { return Address1 + ", " + Address2; }
+        }
         public ResellerViewModel(Reseller entity)
         {
             Id = entity.Id;

@@ -254,6 +254,14 @@
     <Compile Include="Migrations\201605142100279_Migration5.Designer.cs">
       <DependentUpon>201605142100279_Migration5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605142241385_Migration6.cs" />
+    <Compile Include="Migrations\201605142241385_Migration6.Designer.cs">
+      <DependentUpon>201605142241385_Migration6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605142359125_Migration8.cs" />
+    <Compile Include="Migrations\201605142359125_Migration8.Designer.cs">
+      <DependentUpon>201605142359125_Migration8.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICancellationWebService.cs" />
     <Compile Include="Models\Abstract\IProvisioningWebService.cs" />
@@ -504,6 +512,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605142100279_Migration5.resx">
       <DependentUpon>201605142100279_Migration5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605142241385_Migration6.resx">
+      <DependentUpon>201605142241385_Migration6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605142359125_Migration8.resx">
+      <DependentUpon>201605142359125_Migration8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,14 +9,20 @@ namespace StreamOneInterface.Models.Entities
 {
     public class OrderRow
     {
-
+        [Key]
         public int Id { get; set; }
 
-        //public int OrderRowStatus_Id { get; set; }
+        [ForeignKey("Order")]
+        public int OrderID { get; set; }
 
-        //public string item_id { get; set; }
+        [ForeignKey("OrderRowStatus")]
+        public int OrderRowStatusID { get; set; }
 
-        //public int Product_Id { get; set; }
+        //[ForeignKey("Product")]
+        public string ItemID { get; set; }
+
+        [ForeignKey("Product")]
+        public int ProductID { get; set; }
 
         public string Description { get; set; }
 
