@@ -211,12 +211,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OrderRowsController.cs" />
-    <Compile Include="Controllers\OrderRowStatus1Controller.cs" />
     <Compile Include="Controllers\OrderRowStatusController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\OrderStatusController.cs" />
     <Compile Include="Controllers\OrderTypesController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ReceivedOrdersController.cs" />
     <Compile Include="Controllers\ResellersController.cs" />
     <Compile Include="Controllers\WebAPIController.cs" />
     <Compile Include="Global.asax.cs">
@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201605142359125_Migration8.Designer.cs">
       <DependentUpon>201605142359125_Migration8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605150120250_Migration9.cs" />
+    <Compile Include="Migrations\201605150120250_Migration9.Designer.cs">
+      <DependentUpon>201605150120250_Migration9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICancellationWebService.cs" />
     <Compile Include="Models\Abstract\IProvisioningWebService.cs" />
@@ -286,9 +290,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\OrderRowStatusViewModel.cs" />
+    <Compile Include="ViewModels\OrderRowsViewModel.cs" />
+    <Compile Include="ViewModels\OrderRowViewModel.cs" />
     <Compile Include="ViewModels\OrderStatusViewModel.cs" />
+    <Compile Include="ViewModels\OrdersViewModel.cs" />
     <Compile Include="ViewModels\OrderTypeViewModel.cs" />
-    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\ReceivedOrdersViewModel.cs" />
     <Compile Include="ViewModels\ResellerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -475,10 +483,21 @@
     <Content Include="Views\OrderRows\Details.cshtml" />
     <Content Include="Views\OrderRows\Edit.cshtml" />
     <Content Include="Views\OrderRows\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\ReceivedOrders\Create.cshtml" />
+    <Content Include="Views\ReceivedOrders\Delete.cshtml" />
+    <Content Include="Views\ReceivedOrders\Details.cshtml" />
+    <Content Include="Views\ReceivedOrders\Edit.cshtml" />
+    <Content Include="Views\ReceivedOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />
     <Folder Include="Models\Webservices\APIFacade\" />
+    <Folder Include="Views\RecievedOrders\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -518,6 +537,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605142359125_Migration8.resx">
       <DependentUpon>201605142359125_Migration8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605150120250_Migration9.resx">
+      <DependentUpon>201605150120250_Migration9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

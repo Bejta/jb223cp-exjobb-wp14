@@ -12,10 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrderStreamOne_Id)
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Listing_Id)
+            @Html.DisplayNameFor(model => model.OrderStatus.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderType.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reseller.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStreamOneID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListingID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStamp)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
@@ -26,10 +41,25 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.OrderStreamOne_Id)
+            @Html.DisplayFor(modelItem => item.ApplicationUser.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Listing_Id)
+            @Html.DisplayFor(modelItem => item.OrderStatus.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderType.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reseller.CustomerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStreamOneID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListingID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeStamp)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)

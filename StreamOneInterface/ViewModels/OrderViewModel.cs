@@ -7,28 +7,38 @@ using System.Web;
 
 namespace StreamOneInterface.ViewModels
 {
-    public class OrderRowStatusViewModel
+    public class OrderViewModel
     {
-
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Namnet måste fyllas i")]
         //[MaxLength(100, ErrorMessage = "Namnet kan inte vara längre än {1} tecken.")]
         //[MinLength(2, ErrorMessage = "Namnet måste vara minst {1} tecken långt.")]
-        public string Status { get; set; }
+        public string OrderStreamOneID { get; set; }
+
+        [Required(ErrorMessage = "Namnet måste fyllas i")]
+        //[MaxLength(100, ErrorMessage = "Namnet kan inte vara längre än {1} tecken.")]
+        //[MinLength(2, ErrorMessage = "Namnet måste vara minst {1} tecken långt.")]
+        public string ListingID{ get; set; }
+
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
 
         public List<OrderRowViewModel> OrderRows { get; set; }
 
-        public OrderRowStatusViewModel()
+        public OrderViewModel()
         {
             //Empty
         }
-        public OrderRowStatusViewModel(OrderRowStatus entity, bool useOrderRows = true)
+        public OrderViewModel(Order entity, bool useOrders = true)
         {
             Id = entity.Id;
-            Status = entity.RowStatus;
+            OrderStreamOneID = entity.OrderStreamOneID;
+            ListingID = entity.ListingID;
 
-            if (useOrderRows)
+            if (useOrders)
             {
                 OrderRows = entity.OrderRows.Select(c => new OrderRowViewModel(c)).ToList();
             }

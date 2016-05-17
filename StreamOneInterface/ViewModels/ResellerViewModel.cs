@@ -9,8 +9,6 @@ namespace StreamOneInterface.ViewModels
 {
     public class ResellerViewModel
     {
-        [Display(Name = "ID")]
-        [Required(ErrorMessage = "Required field")]
         public int Id { get; set; }
 
         [Display(Name = "Customer Number")]
@@ -45,7 +43,7 @@ namespace StreamOneInterface.ViewModels
         [Required(ErrorMessage = "Required field")]
         public string Website { get; set; }
 
-        [Display(Name = "E-mail")]
+        [Display(Name = "E-mail address")]
         [Required(ErrorMessage = "Required field")]
         public string Email { get; set; }
 
@@ -54,9 +52,10 @@ namespace StreamOneInterface.ViewModels
         public string Country { get; set; }
 
         [Display(Name = "State")]
+        [Required(ErrorMessage = "Required field")]
         public string State { get; set; }
 
-        [Display(Name = "Phone number")]
+        [Display(Name = "Phone")]
         [Required(ErrorMessage = "Required field")]
         public string Phone { get; set; }
 
@@ -64,15 +63,13 @@ namespace StreamOneInterface.ViewModels
         [Required(ErrorMessage = "Required field")]
         public string Zip { get; set; }
 
+        public List<OrderViewModel> Orders { get; set; }
+
         public ResellerViewModel()
         {
             //Empty
         }
-        public string FullAddress
-        {
-            get { return Address1 + ", " + Address2; }
-        }
-        public ResellerViewModel(Reseller entity)
+        public ResellerViewModel(Reseller entity, bool useOrders = true)
         {
             Id = entity.Id;
             CustomerID = entity.CustomerID;
@@ -88,6 +85,32 @@ namespace StreamOneInterface.ViewModels
             State = entity.State;
             Phone = entity.Phone;
             Zip = entity.Zip;
+
+            if (useOrders)
+            {
+                Orders = entity.Orders.Select(c => new OrderViewModel(c)).ToList();
+            }
+        }
+        public Reseller ToEntity(Reseller existing = null)
+        {
+            Reseller entity = (existing != null ? existing : new Reseller());
+
+            entity.Id = this.Id;
+            entity.CustomerID = this.CustomerID;
+            entity.Firstname = this.Firstname;
+            entity.Lastname = this.Lastname;
+            entity.Address1 = this.Address1;
+            entity.Address2 = this.Address2;
+            entity.City = this.City;
+            entity.Company = this.Company;
+            entity.Website = this.Website;
+            entity.Email = this.Email;
+            entity.Country = this.Country;
+            entity.State = this.State;
+            entity.Phone = this.Phone;
+            entity.Zip = this.Zip;
+            
+            return entity;
         }
     }
 }

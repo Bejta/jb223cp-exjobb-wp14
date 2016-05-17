@@ -11,107 +11,107 @@ using StreamOneInterface.Models.Entities;
 
 namespace StreamOneInterface.Controllers
 {
-    public class OrderRowsController : Controller
+    public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: OrderRows
+        // GET: Products
         public ActionResult Index()
         {
-            return View(db.OrderRows.ToList());
+            return View(db.Products.ToList());
         }
 
-        // GET: OrderRows/Details/5
+        // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderRow orderRow = db.OrderRows.Find(id);
-            if (orderRow == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(orderRow);
+            return View(product);
         }
 
-        // GET: OrderRows/Create
+        // GET: Products/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: OrderRows/Create
+        // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,Quantity,UnitPrice")] OrderRow orderRow)
+        public ActionResult Create([Bind(Include = "Id,StreamOneNumber,ShareNumber,Name,Description,Active")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.OrderRows.Add(orderRow);
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(orderRow);
+            return View(product);
         }
 
-        // GET: OrderRows/Edit/5
+        // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderRow orderRow = db.OrderRows.Find(id);
-            if (orderRow == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(orderRow);
+            return View(product);
         }
 
-        // POST: OrderRows/Edit/5
+        // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,Quantity,UnitPrice")] OrderRow orderRow)
+        public ActionResult Edit([Bind(Include = "Id,StreamOneNumber,ShareNumber,Name,Description,Active")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(orderRow).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(orderRow);
+            return View(product);
         }
 
-        // GET: OrderRows/Delete/5
+        // GET: Products/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderRow orderRow = db.OrderRows.Find(id);
-            if (orderRow == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(orderRow);
+            return View(product);
         }
 
-        // POST: OrderRows/Delete/5
+        // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            OrderRow orderRow = db.OrderRows.Find(id);
-            db.OrderRows.Remove(orderRow);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

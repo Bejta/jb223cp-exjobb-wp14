@@ -63,3 +63,4 @@ C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debu
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.Migration5.resources
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.Migration6.resources
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.Migration8.resources
+C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.Migration9.resources
