@@ -4,85 +4,88 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="well col-sm-10">
+    <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
-        </dt>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.Email)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderStatus.Status)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderStatus.Status)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderStatus.Status)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.OrderStatus.Status)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderType.Type)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderType.Type)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderType.Type)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.OrderType.Type)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Reseller.CustomerID)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Reseller.CustomerID)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Reseller.CustomerID)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Reseller.CustomerID)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderStreamOneID)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.OrderStreamOneID)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderStreamOneID)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.OrderStreamOneID)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ListingID)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ListingID)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ListingID)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ListingID)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeStamp)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeStamp)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TimeStamp)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TimeStamp)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+            </div>
+        }
+    </div>
 </div>

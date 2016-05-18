@@ -3,98 +3,32 @@
 @{
     ViewBag.Title = "Orders";
 }
+<div class="well col-sm-10">
+    <h2>List of received orders</h2>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-          Status
-        </th>
-        <th>
-           Type
-        </th>
-        <th>
-            Stream One ID
-        </th>
-        <th>
-            Listing ID
-        </th>
-        <th>
-            Reseller
-        </th>
-        <th></th>
-        <th></th>
-        <th>
-           Date
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model.Orders) {
-
-    string selectedRow = "";
-    if (item.Id == ViewBag.Id)
-    {
-        selectedRow = "selectedrow";
-    }
-    <tr class="@selectedRow">
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderStatus.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderType.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderStreamOneID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ListingID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reseller.Lastname) + " " + @Html.DisplayFor(modelItem => item.Reseller.Firstname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reseller.Company)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Reseller.Website)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            @Html.ActionLink("Select", "Index", new { id = item.Id })
-        </td>
-    </tr>
-}
-
-</table>
-
-@* Order Rows starts here  *@
-
-@if (Model.OrderRows != null)
-{
-    <h3>Order rows of selected order</h3>
-    <table>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-danger" })
+    </p>
+    <table class="table">
         <tr>
+            <th>
+                Status
+            </th>
+            <th>
+                Stream One ID
+            </th>
+            <th>
+                Reseller
+            </th>
+            <th>
+                Date
+            </th>
             <th></th>
-            <th>Item ID</th>
-            <th>Status</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
         </tr>
 
-
-        @foreach (var item in Model.OrderRows)
+        @foreach (var item in Model.Orders)
         {
+
             string selectedRow = "";
             if (item.Id == ViewBag.Id)
             {
@@ -102,24 +36,72 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    @Html.ActionLink("Product details", "Index", new { orderrowID = item.Id })
+                    @Html.DisplayFor(modelItem => item.OrderStatus.Status)
                 </td>
                 <td>
-                    @item.ItemID
+                    @Html.DisplayFor(modelItem => item.OrderStreamOneID)
                 </td>
                 <td>
-                    @item.OrderRowStatus.RowStatus
+                    @Html.DisplayFor(modelItem => item.Reseller.Company)
                 </td>
                 <td>
-                    @item.Product.Name
+                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    @item.UnitPrice
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Select", "Index", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
                 </td>
             </tr>
         }
+
     </table>
-}
+</div>
+<div class="well col-sm-9">
+    @* Order Rows starts here  *@
+
+    @if (Model.OrderRows != null)
+    {
+        <h3>Order rows of selected order</h3>
+        <table>
+            <tr>
+                <th>Item ID</th>
+                <th>Status</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.OrderRows)
+            {
+                string selectedRow = "";
+                if (item.Id == ViewBag.Id)
+                {
+                    selectedRow = "selectedrow";
+                }
+                <tr class="@selectedRow">
+                    <td>
+                        @item.ItemID
+                    </td>
+                    <td>
+                        @item.OrderRowStatus.RowStatus
+                    </td>
+                    <td>
+                        @item.Product.Name
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.UnitPrice
+                    </td>
+                    <td>
+                        @Html.ActionLink("Product details", "Index", new { orderrowID = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>

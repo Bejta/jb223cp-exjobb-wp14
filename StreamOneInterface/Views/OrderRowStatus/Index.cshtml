@@ -1,33 +1,37 @@
 ﻿@model IEnumerable<StreamOneInterface.Models.Entities.OrderRowStatus>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Item Status";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RowStatus)
-        </th>
-        <th></th>
-    </tr>
+    <div class="well col-sm-10">
+        <h2>Item statuses</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RowStatus)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+        <p>
+            @Html.ActionLink("Add new Item Status", "Create", null, new { @class = "btn btn-danger" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RowStatus)
+                </th>
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RowStatus)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>

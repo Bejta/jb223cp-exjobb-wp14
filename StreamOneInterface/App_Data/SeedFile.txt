@@ -1,17 +1,7 @@
-﻿namespace StreamOneInterface.Migrations
-{
-    using Models.Entities;
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<StreamOneInterface.Models.ApplicationDbContext>
-    {
-        public Configuration()
+﻿public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "StreamOneInterface.Models.ApplicationDbContext";
         }
 
         protected override void Seed(StreamOneInterface.Models.ApplicationDbContext context)
@@ -20,7 +10,7 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
-
+            
             var products = new List<Product>
             {
                 new Product { StreamOneNumber = "1001",   ShareNumber = "RSEVUC0033",
@@ -68,7 +58,7 @@
                 new OrderType {Type = "StreamOne Order"},
                 new OrderType {Type = "Provisional Order"},
                 new OrderType {Type = "Periodical Order"},
-
+                
             };
             types.ForEach(s => context.OrderTypes.AddOrUpdate(p => p.Type, s));
             context.SaveChanges();
@@ -163,7 +153,7 @@
                 },
                 new OrderRow
                 {
-
+                    
                     OrderID=orders.SingleOrDefault(s => s.OrderStreamOneID == "b0080cad6b39b50ced361f5d7aa82aec").Id,
                     ItemID= "5a25-­‐d0c8-­‐TEST-­‐TEST-­‐TEST",
                     ProductID= products.SingleOrDefault(s => s.StreamOneNumber == "1002").Id,
@@ -196,5 +186,3 @@
             orderRows.ForEach(s => context.OrderRows.AddOrUpdate(p => p.Id, s));
             context.SaveChanges();
         }
-    }
-}
