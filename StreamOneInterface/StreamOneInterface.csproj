@@ -229,11 +229,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICancellationWebService.cs" />
     <Compile Include="Models\Abstract\IProvisioningWebService.cs" />
+    <Compile Include="Models\Abstract\IRepository.cs" />
     <Compile Include="Models\Abstract\IService.cs" />
     <Compile Include="Models\Abstract\ISettings.cs" />
+    <Compile Include="Models\Abstract\IUnitOfWork.cs" />
     <Compile Include="Models\Abstract\WebServiceBase.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DAL\Repository.cs" />
+    <Compile Include="Models\DAL\UnitOfWork.cs" />
     <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\OrderRow.cs" />
     <Compile Include="Models\Entities\OrderRowStatus.cs" />
@@ -365,6 +368,8 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\StreamOneInterface.dll.config" />
     <Content Include="ClassDiagram1.cd" />
+    <None Include="Properties\PublishProfiles\StreamOne.pubxml" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -456,6 +461,9 @@
     <Content Include="Views\ReceivedOrders\Details.cshtml" />
     <Content Include="Views\ReceivedOrders\Edit.cshtml" />
     <Content Include="Views\ReceivedOrders\Index.cshtml" />
+    <None Include="Web.StreamOne.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />

@@ -8,7 +8,7 @@ using System.Web.Script.Serialization;
 
 namespace StreamOneInterface.Models.Webservices
 {
-    public class CancellationWebService : WebServiceBase
+    public class CancellationWebService : WebServiceBase, ICancellationWebService
     {
         public void CancelSubscription(string provision_data, string token)
         {

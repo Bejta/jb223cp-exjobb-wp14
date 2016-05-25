@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StreamOneInterface.Models.Abstract
 {
-    interface ICancellationWebService
+    public interface ICancellationWebService
     {
     }
 }

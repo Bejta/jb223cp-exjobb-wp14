@@ -10,7 +10,7 @@ using System.Web.Script.Serialization;
 
 namespace StreamOneInterface.Models.Webservices
 {
-    public class ProvisioningWebService : WebServiceBase
+    public class ProvisioningWebService : WebServiceBase, IProvisioningWebService
     {
 
         private readonly ISettings _settings;
