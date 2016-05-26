@@ -12,6 +12,7 @@ namespace StreamOneInterface.Models.Abstract
         IRepository<Order> OrderRepository { get; }
         IRepository<OrderRow> OrderRowRepository { get; }
         IRepository<Reseller> ResellerRepository { get; }
+        IRepository<Product> ProductRepository { get; }
        
         void Save();
     }

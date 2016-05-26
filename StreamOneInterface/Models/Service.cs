@@ -37,6 +37,17 @@ namespace StreamOneInterface.Models
 
         #region Database functionality
 
+        public Product GetActiveProductByS1ID(string s1id)
+        {
+            Product product = _unitOfWork.ProductRepository.Get(c => c.StreamOneNumber == s1id && c.Active == true).FirstOrDefault();
+            return product;
+        }
+        public Reseller GetResellerByS1ID(string s1id)
+        {
+            Reseller reseller = _unitOfWork.ResellerRepository.Get(c => c.CustomerID == s1id).FirstOrDefault();
+            return reseller;
+        }
+
         public Order GetOrder(int id)
         {
             Order order = _unitOfWork.OrderRepository.Get(c => c.Id == id).FirstOrDefault();

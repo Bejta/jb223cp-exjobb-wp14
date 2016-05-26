@@ -18,6 +18,7 @@ namespace StreamOneInterface.Models.DAL
         private IRepository<Order> _orderRepository;
         private IRepository<OrderRow> _orderRowRepository;
         private IRepository<Reseller> _resellerRepository;
+        private IRepository<Product> _productRepository;
 
 
         public IRepository<Order> OrderRepository
@@ -25,6 +26,13 @@ namespace StreamOneInterface.Models.DAL
             get
             {
                 return _orderRepository ?? (_orderRepository = new Repository<Order>(_context));
+            }
+        }
+        public IRepository<Product> ProductRepository
+        {
+            get
+            {
+                return _productRepository ?? (_productRepository = new Repository<Product>(_context));
             }
         }
         public IRepository<OrderRow> OrderRowRepository

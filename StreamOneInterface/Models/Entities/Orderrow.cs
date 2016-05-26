@@ -24,6 +24,8 @@ namespace StreamOneInterface.Models.Entities
         [ForeignKey("Product")]
         public int ProductID { get; set; }
 
+        public string StreamOneID { get; set; }
+
         public string Description { get; set; }
 
         public int Quantity { get; set; }

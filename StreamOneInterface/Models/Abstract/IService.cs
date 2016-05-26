@@ -27,6 +27,10 @@ namespace StreamOneInterface.Models.Abstract
         List<Reseller> GetAllResellers();
         //List<Reseller> GetAllResellersBasedOnAlphabet();
         Reseller GetReseller(int id);
+        Reseller GetResellerByS1ID(string s1id); //Get Reseller by StreamOne reseller ID
+
+        //Product
+        Product GetActiveProductByS1ID(string s1id); //Get active product by StreamOne ID
 
     }
 }

@@ -15,7 +15,7 @@ namespace StreamOneInterface.Models.Webservices.APIFacade
         public string city { get; set; }
         public string company { get; set; }
         public string company_website { get; set; }
-        public string emaill { get; set; }
+        public string email { get; set; }
         public string country { get; set; }
         public string state { get; set; }
         public string phone { get; set; }

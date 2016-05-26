@@ -248,6 +248,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\Webservices\APIFacade\APIFacadeItems.cs" />
+    <Compile Include="Models\Webservices\APIFacade\APIFacadeOrder.cs" />
+    <Compile Include="Models\Webservices\APIFacade\APIFacadeOrderRow.cs" />
+    <Compile Include="Models\Webservices\APIFacade\APIFacadeReseller.cs" />
     <Compile Include="Models\Webservices\CancellationWebService.cs" />
     <Compile Include="Models\Webservices\ProvisioningWebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -467,7 +471,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />
-    <Folder Include="Models\Webservices\APIFacade\" />
     <Folder Include="Views\RecievedOrders\" />
   </ItemGroup>
   <ItemGroup>

@@ -17,23 +17,26 @@ namespace StreamOneInterface.Models.Webservices
     public class ProvisioningWebService : WebServiceBase, IProvisioningWebService
     {
 
+        private IService _service;
+
         private readonly ISettings _settings;
-        public ProvisioningWebService() : this(new Settings(true))
+        public ProvisioningWebService() : this(new Settings(true), new Service())
         {
             //Empty...
         }
 
-        public ProvisioningWebService(Settings settings)
+        public ProvisioningWebService(Settings settings, Service service)
         {
             _settings = settings;
             _settings.Save();
+            _service = service;
         }
 
         /** public provisioning method -­‐ accepts:
          *  provision_data(the json encoded data from post array),
          *  token(the 32 character UUID auth token from the post array)
         **/
-        public string ProvisionApp(String provisionData, String token)
+        public APIFacadeOrder ProvisionApp(String provisionData, String token)
         {
 
             /** define and initialize variables
@@ -57,6 +60,9 @@ namespace StreamOneInterface.Models.Webservices
                 postedData = provisionData;
             }
 
+
+            APIFacadeOrder order = new APIFacadeOrder();
+
             /* Authenticate this
              * provision using token
              * */
@@ -64,41 +70,127 @@ namespace StreamOneInterface.Models.Webservices
             {
                 /* Generate an internal alert or message log for a failed authentication*/
                 string validationError = "Failed Authentication";
-                return validationError;
+                order.return_message = validationError;
+                return order;
             }
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            Hashtable dataTable = new Hashtable();
+            //STREAM ONE EXAMPLE CODE FOR C# WEBSERVICE
+            //Hashtable dataTable = new Hashtable();
 
-            //The hashtable dataTable now contains all of the variables passed to the partner webservice.
-            if (mode == "test")
+            ////The hashtable dataTable now contains all of the variables passed to the partner webservice.
+            //if (mode == "test")
+            //{
+            //    foreach (DictionaryEntry data in dataTable)
+            //    {
+            //        returnData += "Key:" + data.Key + "Value:" + data.Value + "";
+            //    }
+            //}
+
+            order = JsonConvert.DeserializeObject<APIFacadeOrder>(postedData);
+            
+            //JObject jsonObject = JObject.Parse(postedData);
+            //var items = jsonObject.Property("items");
+
+            /* 
+             * This loop checks if all products on 
+             * TODO: Separate this code to a function
+             * */
+            foreach (var i in order.orderrows)
             {
-                foreach (DictionaryEntry data in dataTable)
+                if (_service.GetActiveProductByS1ID(i.product_id) == null)
                 {
-                    returnData += "Key:" + data.Key + "Value:" + data.Value + "";
+                    string validationError = "Unknown or Inactive product found in order items";
+                    order.return_message = validationError;
+                    return order;
                 }
             }
 
-            JObject jsonObject = JObject.Parse(postedData);
-            
-            var items=jsonObject.Property("items");
+            /*
+             * Checks if reseller is unknown or available.
+             * If unknows, saves reseller in database
+             * TODO: Separate this code to a function
+             * */
 
-            APIFacadeReseller reseller = new APIFacadeReseller();
-            APIFacadeOrder order = new APIFacadeOrder();
-            APIFacadeItems APIitems = new APIFacadeItems();
-            reseller = JsonConvert.DeserializeObject<APIFacadeReseller>(postedData);
-            reseller = JsonConvert.DeserializeObject<APIFacadeReseller>(postedData);
-            reseller = JsonConvert.DeserializeObject<APIFacadeReseller>(postedData);
+            if (_service.GetResellerByS1ID(order.reseller.customer_id)==null)
+            {
+                Reseller dbReseller = new Reseller();
 
+                dbReseller.Address1 = order.reseller.address1;
+                dbReseller.Address2 = order.reseller.address2;
+                dbReseller.City = order.reseller.city;
+                dbReseller.Company = order.reseller.company;
+                dbReseller.Website = order.reseller.company_website;
+                dbReseller.Phone = order.reseller.phone;
+                dbReseller.State = order.reseller.state;
+                dbReseller.Zip = order.reseller.zip;
+                dbReseller.Email = order.reseller.email;
+                dbReseller.Firstname = order.reseller.first_name;
+                dbReseller.Lastname = order.reseller.last_name;
+                dbReseller.CustomerID = order.reseller.customer_id;
+                dbReseller.Country = order.reseller.country;
 
+                if (!_service.InsertReseller(dbReseller))
+                {
+                    string validationError = "Not possible to save reseller to the database";
+                    order.return_message = validationError;
+                    return order;
+                }
+            }
 
+            //Represents Order table in the database
+            Order dbOrder = new Order();
+
+            Reseller reseller = _service.GetResellerByS1ID(order.customer_id);
+            int resellerID = int.Parse(reseller.CustomerID);
+
+            dbOrder.ResellerID = resellerID;
+            dbOrder.Date = DateTime.Now;
+            dbOrder.ListingID = order.listing_id;
+            dbOrder.OrderStreamOneID = order.order_id;
+            dbOrder.OrderStatusID = 1; //Status is always by default with id 1
+            dbOrder.OrderTypeID = 1; // Type is always by default with id 1
+
+            if (!_service.InsertOrder(dbOrder))
+            {
+                string validationError = "Reseller was saved in a database, but order could not be saved!";
+                order.return_message = validationError;
+                return order;
+            }
+
+            OrderRow dbOrderRow = new OrderRow();
+            Product product = new Product();
+
+            /*
+             * IMPORTANT: product_id is StreamOne string value and IS UNIQUE in Product table.. 
+             * in the database. However, the real primary key for a table is Id field.
+             */
+            foreach(var i in order.orderrows)
+            {
+                product = _service.GetActiveProductByS1ID(i.product_id);
+
+                dbOrderRow.OrderID = dbOrder.Id; // ?? Should be correct, but can calculate if needed
+                dbOrderRow.OrderRowStatusID = 1; // The first status is always default value
+                dbOrderRow.Quantity = i.quantity;
+                dbOrderRow.Description = i.item_description;
+                dbOrderRow.UnitPrice = i.unit_price;
+                dbOrderRow.ItemID = i.item_id;
+                dbOrderRow.ProductID = product.Id;
+                dbOrderRow.StreamOneID = i.product_id;
+
+                if (!_service.InsertOrderRow(dbOrderRow))
+                {
+                    string validationError = "Reseller and Order were saved in the database, but items could not be saved.";
+                    order.return_message = validationError;
+                    return order;
+                }
+            }
 
             /* Webservice page should return the data which will be used by the Marketplace to populate
              * the getting started webpage
              */
             returnData += "<status>success</status>" + "<username>username</username>" + "<password>password</password>" + "<url>http://www.partnersite.com/login</url>";
-            return returnData;
-
+            order.return_message = returnData;
+            return order;
         }
     }
 }
