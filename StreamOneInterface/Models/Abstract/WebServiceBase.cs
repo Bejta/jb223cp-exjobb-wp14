@@ -12,11 +12,9 @@ namespace StreamOneInterface.Models.Abstract
     public class WebServiceBase
     {
 
-        #region IDisposable Members
+        
 
-        protected virtual void Dispose(bool disposing)
-        {
-        }
+      
 
         public string ReadJSONData(string fileName)
         {
@@ -63,6 +61,12 @@ namespace StreamOneInterface.Models.Abstract
             {
                 return true;
             }
+        }
+
+        #region IDisposable Members
+
+        protected virtual void Dispose(bool disposing)
+        {
         }
 
         public void Dispose()

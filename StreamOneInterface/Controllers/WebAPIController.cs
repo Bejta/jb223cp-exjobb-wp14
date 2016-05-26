@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StreamOneInterface.Models;
+using StreamOneInterface.Models.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,8 +9,21 @@ using System.Web.Http;
 
 namespace StreamOneInterface.Controllers
 {
+    
     public class WebAPIController : ApiController
     {
+
+        private IService _service;
+
+        public WebAPIController()
+            : this (new Service())
+        { }
+        public WebAPIController(IService service)
+        {
+            _service = service;
+        }
+
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {

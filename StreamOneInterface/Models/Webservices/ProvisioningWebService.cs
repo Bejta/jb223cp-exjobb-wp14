@@ -1,4 +1,8 @@
-﻿using StreamOneInterface.Models.Abstract;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using StreamOneInterface.Models.Abstract;
+using StreamOneInterface.Models.Entities;
+using StreamOneInterface.Models.Webservices.APIFacade;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -74,6 +78,20 @@ namespace StreamOneInterface.Models.Webservices
                     returnData += "Key:" + data.Key + "Value:" + data.Value + "";
                 }
             }
+
+            JObject jsonObject = JObject.Parse(postedData);
+            
+            var items=jsonObject.Property("items");
+
+            APIFacadeReseller reseller = new APIFacadeReseller();
+            APIFacadeOrder order = new APIFacadeOrder();
+            APIFacadeItems APIitems = new APIFacadeItems();
+            reseller = JsonConvert.DeserializeObject<APIFacadeReseller>(postedData);
+            reseller = JsonConvert.DeserializeObject<APIFacadeReseller>(postedData);
+            reseller = JsonConvert.DeserializeObject<APIFacadeReseller>(postedData);
+
+
+
 
             /* Webservice page should return the data which will be used by the Marketplace to populate
              * the getting started webpage
