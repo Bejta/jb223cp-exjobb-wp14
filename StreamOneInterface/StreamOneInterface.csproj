@@ -209,6 +209,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CancellationAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderRowStatusController.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Controllers\OrderStatusController.cs" />
     <Compile Include="Controllers\OrderTypesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProvisioningAPIController.cs" />
     <Compile Include="Controllers\ReceivedOrdersController.cs" />
     <Compile Include="Controllers\ResellersController.cs" />
     <Compile Include="Controllers\WebAPIController.cs" />
@@ -372,6 +374,8 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\StreamOneInterface.dll.config" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="App_Data\noitem.json" />
+    <Content Include="App_Data\notupdated.json" />
     <None Include="Properties\PublishProfiles\StreamOne.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

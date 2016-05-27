@@ -36,7 +36,7 @@ namespace StreamOneInterface.Models.Webservices
          *  provision_data(the json encoded data from post array),
          *  token(the 32 character UUID auth token from the post array)
         **/
-        public APIFacadeOrder ProvisionApp(String provisionData, String token)
+        public APIFacadeOrder ProvisionApp(string provisionData, string token)
         {
 
             /** define and initialize variables

@@ -1,4 +1,5 @@
 ﻿using StreamOneInterface.Models.Abstract;
+using StreamOneInterface.Models.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,21 @@ namespace StreamOneInterface.Models.Webservices
 {
     public class CancellationWebService : WebServiceBase, ICancellationWebService
     {
+
+        private IService _service;
+
+        private readonly ISettings _settings;
+        public CancellationWebService() : this(new Settings(true), new Service())
+        {
+            //Empty...
+        }
+
+        public CancellationWebService(Settings settings, Service service)
+        {
+            _settings = settings;
+            _settings.Save();
+            _service = service;
+        }
         public void CancelSubscription(string provision_data, string token)
         {
             /* Declare method variables
@@ -40,19 +56,6 @@ namespace StreamOneInterface.Models.Webservices
             **/
             if (!VerifyAuthString(token))
             {
-                /* Handle local cancellation code here.
-                 * 1. Update local database
-                 * 2. Create error message
-                 * 3. Or, send email notifications.
-                **/
-
-                /*
-                  TODO
-                */
-
-                /* Create associative array of status and pw to return
-                 *  to the marketplace listener
-                **/
                 returnJSON = ReadJSONData("failedauthentication.json");
                 /*  Print out the failed json for marketplace listener
                 **/
@@ -61,7 +64,25 @@ namespace StreamOneInterface.Models.Webservices
             }
             else
             {
-                returnJSON = ReadJSONData("success.json");
+
+                OrderRow dbOrderRow = new OrderRow();
+                dbOrderRow = _service.GetOrderRowByItemId(itemId);
+
+                if (dbOrderRow == null)
+                {
+                    returnJSON = ReadJSONData("noitem.json");
+                    Console.WriteLine(returnJSON);
+                    return;
+                }
+                dbOrderRow.OrderRowStatusID = 2;
+
+                if(_service.UpdateOrderRow(dbOrderRow))
+                {
+                    returnJSON = ReadJSONData("success.json");
+                    Console.WriteLine(returnJSON);
+                    return;
+                }
+                returnJSON = ReadJSONData("notupdated.json");
                 Console.WriteLine(returnJSON);
                 return;
             }

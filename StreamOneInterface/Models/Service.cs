@@ -2,6 +2,7 @@
 using StreamOneInterface.Models.DAL;
 using StreamOneInterface.Models.Entities;
 using StreamOneInterface.Models.Webservices;
+using StreamOneInterface.Models.Webservices.APIFacade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,27 @@ namespace StreamOneInterface.Models
         }
 
         #region Webservice functionality
+        public APIFacadeOrder POSTProvisionalOrder(string token, string json)
+        {
+            APIFacadeOrder APIOrder = new APIFacadeOrder();
+            APIOrder = _provisioningWebService.ProvisionApp(token, json);
+            return APIOrder;
+        }
+
+        public void POSTCancellationOrder(string token, string json)
+        {
+            _cancellationWebService.CancelSubscription(token, json);
+            return;
+        }
         #endregion
 
         #region Database functionality
+
+        public OrderRow GetOrderRowByItemId(string itemId)
+        {
+            OrderRow orderRow = _unitOfWork.OrderRowRepository.Get(c => c.ItemID == itemId).FirstOrDefault();
+            return orderRow;
+        }
 
         public Product GetActiveProductByS1ID(string s1id)
         {

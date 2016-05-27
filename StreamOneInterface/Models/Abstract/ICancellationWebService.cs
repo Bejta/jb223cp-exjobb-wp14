@@ -8,5 +8,6 @@ namespace StreamOneInterface.Models.Abstract
 {
     public interface ICancellationWebService
     {
+        void CancelSubscription(string provision_data, string token);
     }
 }
