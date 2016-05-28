@@ -3,7 +3,7 @@ namespace StreamOneInterface.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -14,9 +14,10 @@ namespace StreamOneInterface.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         OrderID = c.Int(nullable: false),
                         OrderRowStatusID = c.Int(nullable: false),
-                        ItemID = c.String(),
+                        ItemID = c.String(nullable: false),
                         ProductID = c.Int(nullable: false),
-                        Description = c.String(),
+                        StreamOneID = c.String(nullable: false),
+                        Description = c.String(nullable: false, maxLength: 400),
                         Quantity = c.Int(nullable: false),
                         UnitPrice = c.Single(nullable: false),
                     })
@@ -134,18 +135,18 @@ namespace StreamOneInterface.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         CustomerID = c.String(nullable: false),
-                        Firstname = c.String(nullable: false),
-                        Lastname = c.String(nullable: false),
-                        Address1 = c.String(nullable: false),
-                        Address2 = c.String(nullable: false),
-                        City = c.String(nullable: false),
-                        Company = c.String(nullable: false),
-                        Website = c.String(nullable: false),
+                        Firstname = c.String(nullable: false, maxLength: 100),
+                        Lastname = c.String(nullable: false, maxLength: 100),
+                        Address1 = c.String(nullable: false, maxLength: 100),
+                        Address2 = c.String(),
+                        City = c.String(),
+                        Company = c.String(nullable: false, maxLength: 100),
+                        Website = c.String(),
                         Email = c.String(nullable: false),
                         Country = c.String(nullable: false),
-                        State = c.String(nullable: false),
-                        Phone = c.String(nullable: false),
-                        Zip = c.String(nullable: false),
+                        State = c.String(),
+                        Phone = c.String(),
+                        Zip = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -163,10 +164,10 @@ namespace StreamOneInterface.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        StreamOneNumber = c.String(nullable: false),
-                        ShareNumber = c.String(nullable: false),
-                        Name = c.String(nullable: false),
-                        Description = c.String(nullable: false),
+                        StreamOneNumber = c.String(nullable: false, maxLength: 100),
+                        ShareNumber = c.String(nullable: false, maxLength: 100),
+                        Name = c.String(nullable: false, maxLength: 100),
+                        Description = c.String(nullable: false, maxLength: 1000),
                         Active = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);

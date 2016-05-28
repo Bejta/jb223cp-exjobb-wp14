@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace StreamOneInterface.Models.Entities
         public int Id { get; set; }
 
         [ForeignKey("ApplicationUser")]
+        [DefaultValue(1)]
         public string UserID { get; set; }
 
         public string OrderStreamOneID { get; set; }
@@ -24,12 +26,14 @@ namespace StreamOneInterface.Models.Entities
         public int ResellerID { get; set; }
 
         [ForeignKey("OrderType")]
+        [DefaultValue(1)]
         public int OrderTypeID { get; set; }
 
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
 
         [ForeignKey("OrderStatus")]
+        [DefaultValue(1)]
         public int OrderStatusID { get; set; }
 
         [DataType(DataType.Date)]

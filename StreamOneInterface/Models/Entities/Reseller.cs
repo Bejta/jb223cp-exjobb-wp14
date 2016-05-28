@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -17,30 +18,31 @@ namespace StreamOneInterface.Models.Entities
 
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "Required field")]
+        [StringLength(100, ErrorMessage = "Must be between {2} and {1} characters long.", MinimumLength = 1)]
         public string Firstname { get; set; }
 
         [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Required field")]
+        [StringLength(100, ErrorMessage = "Must be between {2} and {1} characters long.", MinimumLength = 1)]
         public string Lastname { get; set; }
 
         [Display(Name = "Address 1")]
         [Required(ErrorMessage = "Required field")]
+        [StringLength(100, ErrorMessage = "Must be between {2} and {1} characters long.", MinimumLength = 3)]
         public string Address1 { get; set; }
 
         [Display(Name = "Address 2")]
-        [Required(ErrorMessage = "Required field")]
         public string Address2 { get; set; }
 
         [Display(Name = "City")]
-        [Required(ErrorMessage = "Required field")]
         public string City { get; set; }
 
         [Display(Name = "Company")]
         [Required(ErrorMessage = "Required field")]
+        [StringLength(100, ErrorMessage = "Must be between {2} and {1} characters long.", MinimumLength = 1)]
         public string Company { get; set; }
 
         [Display(Name = "Website")]
-        [Required(ErrorMessage = "Required field")]
         public string Website { get; set; }
 
         [Display(Name = "E-mail address")]
@@ -49,18 +51,16 @@ namespace StreamOneInterface.Models.Entities
 
         [Display(Name = "Country")]
         [Required(ErrorMessage = "Required field")]
+        [DefaultValue("SE")]
         public string Country { get; set; }
 
         [Display(Name = "State")]
-        [Required(ErrorMessage = "Required field")]
         public string State { get; set; }
 
         [Display(Name = "Phone")]
-        [Required(ErrorMessage = "Required field")]
         public string Phone { get; set; }
 
         [Display(Name = "Zip code")]
-        [Required(ErrorMessage = "Required field")]
         public string Zip { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }

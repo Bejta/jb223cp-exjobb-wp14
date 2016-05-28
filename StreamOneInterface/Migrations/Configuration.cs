@@ -146,6 +146,7 @@
                     OrderID=orders.SingleOrDefault(s => s.OrderStreamOneID == "testtesttest").Id,
                     ItemID= "5a25-­‐d0c8-­‐267c-­‐01d1-­‐541f",
                     ProductID= products.SingleOrDefault(s => s.StreamOneNumber == "392").Id,
+                    StreamOneID= products.SingleOrDefault(s => s.StreamOneNumber == "392").StreamOneNumber,
                     OrderRowStatusID= rowStatuses.SingleOrDefault(s => s.RowStatus == "Product on hold").Id,
                     Quantity= 1,
                     Description = products.SingleOrDefault(s => s.StreamOneNumber == "392").Description,
@@ -155,7 +156,8 @@
                 {
                     OrderID=orders.SingleOrDefault(s => s.OrderStreamOneID == "testtesttest").Id,
                     ItemID= "5a25-­‐d0c8-­‐267c-­‐01d1-­‐TEST",
-                    ProductID= products.SingleOrDefault(s => s.StreamOneNumber == "393").Id,
+                    ProductID= 1,
+                    StreamOneID= products.SingleOrDefault(s => s.StreamOneNumber == "393").StreamOneNumber,
                     OrderRowStatusID= rowStatuses.SingleOrDefault(s => s.RowStatus == "Not Yet Applicable").Id,
                     Quantity= 2,
                     Description = products.SingleOrDefault(s => s.StreamOneNumber == "393").Description,
@@ -167,6 +169,7 @@
                     OrderID=orders.SingleOrDefault(s => s.OrderStreamOneID == "b0080cad6b39b50ced361f5d7aa82aec").Id,
                     ItemID= "5a25-­‐d0c8-­‐TEST-­‐TEST-­‐TEST",
                     ProductID= products.SingleOrDefault(s => s.StreamOneNumber == "1002").Id,
+                    StreamOneID= products.SingleOrDefault(s => s.StreamOneNumber == "1002").StreamOneNumber,
                     OrderRowStatusID= rowStatuses.SingleOrDefault(s => s.RowStatus == "Product on hold").Id,
                     Quantity=2,
                     Description = products.SingleOrDefault(s => s.StreamOneNumber == "1002").Description,
@@ -175,8 +178,9 @@
                 new OrderRow
                 {
                     OrderID=orders.SingleOrDefault(s => s.OrderStreamOneID == "b0080cad6b39b50ced361f5d7aa82aec").Id,
-                    ItemID= "5a25-­‐d0c8-­‐TEST-­‐TEST-­‐TEST",
+                    ItemID= "5a25-­‐d0c8-­‐TEST-­‐TEST",
                     ProductID= products.SingleOrDefault(s => s.StreamOneNumber == "1003").Id,
+                     StreamOneID= products.SingleOrDefault(s => s.StreamOneNumber == "1003").StreamOneNumber,
                     OrderRowStatusID= rowStatuses.SingleOrDefault(s => s.RowStatus == "Not Yet Applicable").Id,
                     Quantity=1,
                     Description = products.SingleOrDefault(s => s.StreamOneNumber == "1003").Description,
@@ -185,8 +189,9 @@
                 new OrderRow
                 {
                     OrderID=orders.SingleOrDefault(s => s.OrderStreamOneID == "b0080cad6b39b50ced361f5d7aa82aec").Id,
-                    ItemID= "5a25-­‐d0c8-­‐TEST-­‐TEST-­‐TEST",
+                    ItemID= "5a25-­‐d0c8-­‐TEST--NEW",
                     ProductID= products.SingleOrDefault(s => s.StreamOneNumber == "1001").Id,
+                     StreamOneID= products.SingleOrDefault(s => s.StreamOneNumber == "1001").StreamOneNumber,
                     OrderRowStatusID= rowStatuses.SingleOrDefault(s => s.RowStatus == "Product on hold").Id,
                     Quantity=1,
                     Description = products.SingleOrDefault(s => s.StreamOneNumber == "1001").Description,

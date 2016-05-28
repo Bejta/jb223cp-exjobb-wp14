@@ -9,7 +9,6 @@ namespace StreamOneInterface.Models.Entities
     public class OrderStatus
     {
         [Display(Name = "Status ID")]
-        //[Required(ErrorMessage = "Required field")]
         public int Id { get; set; }
 
         [Display(Name = "Status")]

@@ -8,7 +8,7 @@ namespace StreamOneInterface.Models.Entities
 {
     public class OrderType
     {
-
+        [Key]
         public int Id { get; set; }
 
         [Display(Name = "Type")]
