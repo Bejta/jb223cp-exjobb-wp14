@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201605281342185_init.Designer.cs">
       <DependentUpon>201605281342185_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605291431331_UpdatedField.cs" />
+    <Compile Include="Migrations\201605291431331_UpdatedField.Designer.cs">
+      <DependentUpon>201605291431331_UpdatedField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abstract\ICancellationWebService.cs" />
     <Compile Include="Models\Abstract\IProvisioningWebService.cs" />
@@ -346,6 +350,9 @@
     <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\background.jpg" />
+    <Content Include="Content\Images\cloud.png" />
+    <Content Include="Content\Images\toplogo.gif" />
     <Content Include="Scripts\menu.js" />
     <Content Include="Content\OldBootstrap.css" />
     <Content Include="favicon.ico" />
@@ -421,7 +428,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Resellers\Create.cshtml" />
-    <Content Include="Views\Resellers\Delete.cshtml" />
     <Content Include="Views\Resellers\Details.cshtml" />
     <Content Include="Views\Resellers\Edit.cshtml" />
     <Content Include="Views\Resellers\Index.cshtml" />
@@ -445,23 +451,16 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
-    <Content Include="Views\OrderRowStatus1\Create.cshtml" />
-    <Content Include="Views\OrderRowStatus1\Delete.cshtml" />
-    <Content Include="Views\OrderRowStatus1\Details.cshtml" />
-    <Content Include="Views\OrderRowStatus1\Edit.cshtml" />
-    <Content Include="Views\OrderRowStatus1\Index.cshtml" />
     <Content Include="Views\OrderRows\Create.cshtml" />
     <Content Include="Views\OrderRows\Delete.cshtml" />
     <Content Include="Views\OrderRows\Details.cshtml" />
     <Content Include="Views\OrderRows\Edit.cshtml" />
     <Content Include="Views\OrderRows\Index.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ReceivedOrders\Create.cshtml" />
-    <Content Include="Views\ReceivedOrders\Delete.cshtml" />
     <Content Include="Views\ReceivedOrders\Details.cshtml" />
     <Content Include="Views\ReceivedOrders\Edit.cshtml" />
     <Content Include="Views\ReceivedOrders\Index.cshtml" />
@@ -470,7 +469,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Images\" />
     <Folder Include="Views\RecievedOrders\" />
   </ItemGroup>
   <ItemGroup>
@@ -484,6 +482,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605281342185_init.resx">
       <DependentUpon>201605281342185_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605291431331_UpdatedField.resx">
+      <DependentUpon>201605291431331_UpdatedField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

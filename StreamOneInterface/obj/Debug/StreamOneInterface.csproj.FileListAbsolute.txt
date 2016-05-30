@@ -54,3 +54,4 @@ C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\bin\Syst
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\bin\System.Web.Http.WebHost.xml
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.init.resources
 C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.csproj.GenerateResource.Cache
+C:\Users\Jasmin\Documents\StreamOneInterface\Project\StreamOneInterface\obj\Debug\StreamOneInterface.Migrations.UpdatedField.resources

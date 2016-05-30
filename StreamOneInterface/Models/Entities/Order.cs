@@ -29,8 +29,9 @@ namespace StreamOneInterface.Models.Entities
         [DefaultValue(1)]
         public int OrderTypeID { get; set; }
 
-        [Timestamp]
-        public Byte[] TimeStamp { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public DateTime LastUpdated { get; set; }
 
         [ForeignKey("OrderStatus")]
         [DefaultValue(1)]

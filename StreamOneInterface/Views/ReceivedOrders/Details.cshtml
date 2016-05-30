@@ -57,15 +57,6 @@
             <dd>
                 @Html.DisplayFor(model => model.ListingID)
             </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.TimeStamp)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.TimeStamp)
-            </dd>
-
             <dt>
                 @Html.DisplayNameFor(model => model.Date)
             </dt>
@@ -77,7 +68,7 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-danger" })
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
     </p>
 </div>
