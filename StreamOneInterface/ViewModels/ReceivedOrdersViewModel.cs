@@ -8,8 +8,8 @@ namespace StreamOneInterface.ViewModels
 {
     public class ReceivedOrdersViewModel
     {
-            public IEnumerable<Order> Orders { get; set; }
-            public IEnumerable<OrderRow> OrderRows { get; set; }
-            //public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
+        public IEnumerable<OrderRow> OrderRows { get; set; }
+        
     }
 }

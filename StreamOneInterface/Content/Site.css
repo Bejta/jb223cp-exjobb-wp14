@@ -51,3 +51,28 @@ a:active {
     color:white;
 }
 
+.tableheader a { color: white !important; } 
+.tableheader a:hover { color: white !important; }
+.tableheader a:visited { color: white !important; }
+.tableheader a:active { color: white !important; }
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #d1d1d1; 
+} 
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+   
+   background-color: #ffffff; 
+}
+
+.table-striped > tbody > tr > .success,
+.table-striped > tbody > .success > td,
+.table-striped > tbody > .success > th {
+   background-color: #fbf083 !important;
+}
+
+#orderRows
+{
+    margin-left:17%;
+}
+
+

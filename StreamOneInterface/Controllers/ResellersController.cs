@@ -16,9 +16,48 @@ namespace StreamOneInterface.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Resellers
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Resellers.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "first_name_desc" : "";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "first_name" : "";
+            ViewBag.CompanySortParm = sortOrder == "company" ? "company_desc" : "company";
+            ViewBag.LastnameSortParm = String.IsNullOrEmpty(sortOrder) ? "last_name" : "";
+            ViewBag.LastnamedescSortParm = String.IsNullOrEmpty(sortOrder) ? "last_name_desc" : "";
+
+
+            var resellers = from r in db.Resellers
+                           select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                resellers = resellers.Where(r => r.Company.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "first_name":
+                    resellers = resellers.OrderBy(r => r.Firstname);
+                    break;
+                case "first_name_desc":
+                    resellers = resellers.OrderByDescending(r => r.Firstname);
+                    break;
+                case "last_name":
+                    resellers = resellers.OrderBy(r => r.Lastname);
+                    break;
+                case "last_name_desc":
+                    resellers = resellers.OrderByDescending(r => r.Lastname);
+                    break;
+                case "company":
+                    resellers = resellers.OrderBy(r => r.Lastname);
+                    break;
+                case "company_desc":
+                    resellers = resellers.OrderByDescending(r => r.Lastname);
+                    break;
+                default:
+                    resellers = resellers.OrderBy(s => s.CustomerID);
+                    break;
+            }
+            //db.Resellers = resellers.ToList();
+            return View(resellers.ToList());
         }
 
         // GET: Resellers/Details/5
