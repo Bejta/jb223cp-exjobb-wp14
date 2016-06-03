@@ -13,6 +13,7 @@ using PagedList;
 
 namespace StreamOneInterface.Controllers
 {
+    [Authorize]
     public class ReceivedOrdersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -30,7 +31,7 @@ namespace StreamOneInterface.Controllers
             int pageSize = 4;
             int pageNumber = (page ?? 1);
 
-            int orderPageNumber = (OrderPage ?? 1);
+            //int orderPageNumber = (OrderPage ?? 1);
 
             ViewBag.StatusSortParm = String.IsNullOrEmpty(sortOrder) ? "status_desc" : "";
             ViewBag.StatusDescParm = String.IsNullOrEmpty(sortOrder) ? "status" : "";
@@ -54,13 +55,15 @@ namespace StreamOneInterface.Controllers
 
             var viewModel = new ReceivedOrdersViewModel();
 
-            viewModel.Orders = db.Orders
-                .Include(o => o.ApplicationUser)
-                .Include(i => i.OrderStatus)
-                .Include(i => i.Reseller)
-                .Include(i=> i.OrderType)
-                .Include(i => i.OrderRows.Select(c => c.Product))
-                .OrderBy(i => i.Date) ;
+                viewModel.Orders = db.Orders
+                    .Include(o => o.ApplicationUser)
+                    .Include(i => i.OrderStatus)
+                    .Include(i => i.Reseller)
+                    .Include(i => i.OrderType)
+                    .Include(i => i.OrderRows.Select(c => c.Product))
+                    .OrderBy(i => i.Id);
+           
+           
 
             
 
@@ -104,8 +107,13 @@ namespace StreamOneInterface.Controllers
             if (id != null)
             {
                 ViewBag.Id = id.Value;
-                viewModel.OrderRows = viewModel.Orders.Where(
-                    i => i.Id == id.Value).Single().OrderRows;
+
+                viewModel.Orders.Count();
+                if(viewModel.Orders.Where(i => i.Id == id.Value).SingleOrDefault() != null)
+                {
+                    viewModel.OrderRows = viewModel.Orders.Where(
+                    i => i.Id == id.Value).SingleOrDefault().OrderRows;
+                }  
             }
 
            

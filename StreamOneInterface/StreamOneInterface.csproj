@@ -388,6 +388,7 @@
     <Content Include="ClassDiagram1.cd" />
     <Content Include="App_Data\noitem.json" />
     <Content Include="App_Data\notupdated.json" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Properties\PublishProfiles\StreamOne.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

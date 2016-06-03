@@ -36,7 +36,7 @@
                     @Html.ActionLink("Reseller", "Index", new { sortOrder = ViewBag.CompanySortParm, currentFilter = ViewBag.CurrentFilter })
                 </th>
                 <th>
-                    @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.DateSortParm , currentFilter = ViewBag.CurrentFilter })
+                    @Html.ActionLink("Date", "Index", new { sortOrder = ViewBag.DateSortParm , currentFilter = ViewBag.CurrentFilter })
                 </th>
                 <th></th>
             </tr>
@@ -74,21 +74,17 @@
             }
         </tbody>
     </table>
-    <br />
-    <div>
-        <br />
-        @*Page @(Model.Orders.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
-
+    
         @Html.PagedListPager((IPagedList)ViewBag.OnePageofOrders, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-    </div>
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}))
+    
 </div>
 <div class="well col-sm-9" id="orderRows">
     @* Order Rows starts here  *@
 
     @if (Model.OrderRows != null)
     {
-        <h3>Order rows of selected order</h3>
+        <h4>Order rows of selected order</h4>
         <table class="table table-striped table-hover table-condensed">
             <thead class="tableheader">
                 <tr>

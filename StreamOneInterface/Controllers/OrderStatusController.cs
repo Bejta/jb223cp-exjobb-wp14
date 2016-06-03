@@ -11,6 +11,7 @@ using StreamOneInterface.Models.Entities;
 
 namespace StreamOneInterface.Controllers
 {
+    [Authorize]
     public class OrderStatusController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

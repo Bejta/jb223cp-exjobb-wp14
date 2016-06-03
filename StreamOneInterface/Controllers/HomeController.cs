@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace StreamOneInterface.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()

@@ -74,18 +74,6 @@ namespace StreamOneInterface.Models.Webservices
                 return order;
             }
 
-            //STREAM ONE EXAMPLE CODE FOR C# WEBSERVICE
-            //Hashtable dataTable = new Hashtable();
-
-            ////The hashtable dataTable now contains all of the variables passed to the partner webservice.
-            //if (mode == "test")
-            //{
-            //    foreach (DictionaryEntry data in dataTable)
-            //    {
-            //        returnData += "Key:" + data.Key + "Value:" + data.Value + "";
-            //    }
-            //}
-
             order = JsonConvert.DeserializeObject<APIFacadeOrder>(postedData);
             
             //JObject jsonObject = JObject.Parse(postedData);

@@ -68,6 +68,12 @@ a:active {
 .table-striped > tbody > .success > td,
 .table-striped > tbody > .success > th {
    background-color: #fbf083 !important;
+   /*border-top-style:solid !important;
+   border-top-width:medium !important;
+   border-bottom-width:medium !important;
+   border-bottom-style: solid !important;
+   border-top-color:black !important;
+   border-bottom-color:black !important;*/
 }
 
 #orderRows
