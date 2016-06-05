@@ -159,7 +159,7 @@ namespace StreamOneInterface.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserID,OrderStreamOneID,ListingID,ResellerID,OrderTypeID,TimeStamp,OrderStatusID,Date")] Order order)
+        public ActionResult Create([Bind(Include = "Id,UserID,OrderStreamOneID,ListingID,ResellerID,OrderTypeID,LastUpdated,OrderStatusID,Date")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -199,7 +199,7 @@ namespace StreamOneInterface.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserID,OrderStreamOneID,ListingID,ResellerID,OrderTypeID,TimeStamp,OrderStatusID,Date")] Order order)
+        public ActionResult Edit([Bind(Include = "Id,UserID,OrderStreamOneID,ListingID,ResellerID,OrderTypeID,OrderStatusID,Date,LastUpdated")] Order order)
         {
             if (ModelState.IsValid)
             {

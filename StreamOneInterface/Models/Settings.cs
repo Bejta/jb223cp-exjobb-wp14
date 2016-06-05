@@ -27,9 +27,11 @@ namespace StreamOneInterface.Models
 
         //Constructors
         [JsonConstructor]
-        public Settings(bool load = false)
+        public Settings(bool load)
         {
             string pathAppData = HttpContext.Current.ApplicationInstance.Server.MapPath("~/App_Data/");
+            //string pathAppData = HttpContext.Current.Server.MapPath(@"~/App_Data");
+            
             _filePath = Path.Combine(pathAppData, FILENAME);
 
             Initialize(load);

@@ -42,7 +42,8 @@ namespace StreamOneInterface.Migrations
                         TimeStamp = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         OrderStatusID = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
-                    })
+                        LastUpdated = c.DateTime(nullable: false),
+                })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserID)
                 .ForeignKey("dbo.OrderStatus", t => t.OrderStatusID, cascadeDelete: true)

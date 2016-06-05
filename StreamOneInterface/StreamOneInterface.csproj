@@ -270,15 +270,7 @@
     <Compile Include="Models\Webservices\ProvisioningWebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\OrderRowStatusViewModel.cs" />
-    <Compile Include="ViewModels\OrderRowsViewModel.cs" />
-    <Compile Include="ViewModels\OrderRowViewModel.cs" />
-    <Compile Include="ViewModels\OrderStatusViewModel.cs" />
-    <Compile Include="ViewModels\OrdersViewModel.cs" />
-    <Compile Include="ViewModels\OrderTypeViewModel.cs" />
-    <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ReceivedOrdersViewModel.cs" />
-    <Compile Include="ViewModels\ResellerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SeedFile.txt" />
@@ -389,6 +381,7 @@
     <Content Include="App_Data\noitem.json" />
     <Content Include="App_Data\notupdated.json" />
     <Content Include="ClassDiagram2.cd" />
+    <Content Include="ClassDiagram3.cd" />
     <None Include="Properties\PublishProfiles\StreamOne.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

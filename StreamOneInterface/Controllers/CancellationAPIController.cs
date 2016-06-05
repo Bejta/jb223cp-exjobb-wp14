@@ -1,4 +1,5 @@
-﻿using StreamOneInterface.Models;
+﻿using Newtonsoft.Json.Linq;
+using StreamOneInterface.Models;
 using StreamOneInterface.Models.Abstract;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace StreamOneInterface.Controllers
         private IService _service;
 
         public CancellationAPIController()
-            : this (new Service())
+            : this(new Service())
         { }
         public CancellationAPIController(IService service)
         {
@@ -34,10 +35,21 @@ namespace StreamOneInterface.Controllers
         }
 
         // POST: api/CancellationAPI
-        public void Post(string token,[FromBody]string json)
+        [System.Web.Http.HttpPost]
+        public void Post([FromBody]JToken json)
         {
-            
-            _service.POSTCancellationOrder(token, json);
+            string rawJSON = json.ToString();
+
+            /*
+            * Token hardcoded just for test purpose.
+            * The real token will be the part of HTTP POST Request, but
+            * documentation from StreamOne API doesn't show in which way.
+            * When StreamOne sends real data (even test order) it will be possible to catch the request
+            * and give token variable real value from the request
+            * 
+            * */
+            string token = "abc";
+            _service.POSTCancellationOrder(token, rawJSON);
         }
 
         // PUT: api/CancellationAPI/5

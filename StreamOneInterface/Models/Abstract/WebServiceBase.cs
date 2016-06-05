@@ -12,10 +12,6 @@ namespace StreamOneInterface.Models.Abstract
     public class WebServiceBase
     {
 
-        
-
-      
-
         public string ReadJSONData(string fileName)
         {
             var rawJSON = string.Empty;
@@ -53,14 +49,25 @@ namespace StreamOneInterface.Models.Abstract
             streamReader.Close();
             StreamOneResponse.Close();
 
-            if (result != "Ok")
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            /*
+             * IMPORTANT: As in test mode, this function should always return TRUE so
+             * that we can assume that authorization is done on streamOne Url.
+             * However, when in real mode (or test mode with StreamOne LIVE test API) the code bellow
+             * should be uncommented so that true is returned only when response message is "Ok".
+             * Of course the last return on line 70 should be commented.
+             * 
+             * */
+
+            //if (result != "Ok")
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    return true;
+            //}
+
+            return true;
         }
 
         #region IDisposable Members

@@ -36,7 +36,7 @@ namespace StreamOneInterface.Models.Webservices
          *  provision_data(the json encoded data from post array),
          *  token(the 32 character UUID auth token from the post array)
         **/
-        public APIFacadeOrder ProvisionApp(string provisionData, string token)
+        public APIFacadeOrder ProvisionApp(string token, string provisionData)
         {
 
             /** define and initialize variables
@@ -48,7 +48,7 @@ namespace StreamOneInterface.Models.Webservices
             string postedData;
             string returnData = "";
 
-            if (mode == "test")
+            if (mode == "Test")
             {
                 postedData = ReadJSONData("testorder.json");
             }
@@ -83,7 +83,7 @@ namespace StreamOneInterface.Models.Webservices
              * This loop checks if all products on 
              * TODO: Separate this code to a function
              * */
-            foreach (var i in order.orderrows)
+            foreach (var i in order.Items)
             {
                 if (_service.GetActiveProductByS1ID(i.product_id) == null)
                 {
@@ -99,23 +99,23 @@ namespace StreamOneInterface.Models.Webservices
              * TODO: Separate this code to a function
              * */
 
-            if (_service.GetResellerByS1ID(order.reseller.customer_id)==null)
+            if (_service.GetResellerByS1ID(order.customer_id)==null)
             {
                 Reseller dbReseller = new Reseller();
 
-                dbReseller.Address1 = order.reseller.address1;
-                dbReseller.Address2 = order.reseller.address2;
-                dbReseller.City = order.reseller.city;
-                dbReseller.Company = order.reseller.company;
-                dbReseller.Website = order.reseller.company_website;
-                dbReseller.Phone = order.reseller.phone;
-                dbReseller.State = order.reseller.state;
-                dbReseller.Zip = order.reseller.zip;
-                dbReseller.Email = order.reseller.email;
-                dbReseller.Firstname = order.reseller.first_name;
-                dbReseller.Lastname = order.reseller.last_name;
-                dbReseller.CustomerID = order.reseller.customer_id;
-                dbReseller.Country = order.reseller.country;
+                dbReseller.Address1 = order.address1;
+                dbReseller.Address2 = order.address2;
+                dbReseller.City = order.city;
+                dbReseller.Company = order.company;
+                dbReseller.Website = order.company_website;
+                dbReseller.Phone = order.phone;
+                dbReseller.State = order.state;
+                dbReseller.Zip = order.zip;
+                dbReseller.Email = order.email;
+                dbReseller.Firstname = order.first_name;
+                dbReseller.Lastname = order.last_name;
+                dbReseller.CustomerID = order.customer_id;
+                dbReseller.Country = order.country;
 
                 if (!_service.InsertReseller(dbReseller))
                 {
@@ -129,10 +129,11 @@ namespace StreamOneInterface.Models.Webservices
             Order dbOrder = new Order();
 
             Reseller reseller = _service.GetResellerByS1ID(order.customer_id);
-            int resellerID = int.Parse(reseller.CustomerID);
+            int resellerID = reseller.Id;
 
             dbOrder.ResellerID = resellerID;
             dbOrder.Date = DateTime.Now;
+            dbOrder.LastUpdated = DateTime.Now;
             dbOrder.ListingID = order.listing_id;
             dbOrder.OrderStreamOneID = order.order_id;
             dbOrder.OrderStatusID = 1; //Status is always by default with id 1
@@ -152,7 +153,7 @@ namespace StreamOneInterface.Models.Webservices
              * IMPORTANT: product_id is StreamOne string value and IS UNIQUE in Product table.. 
              * in the database. However, the real primary key for a table is Id field.
              */
-            foreach(var i in order.orderrows)
+            foreach(var i in order.Items)
             {
                 product = _service.GetActiveProductByS1ID(i.product_id);
 

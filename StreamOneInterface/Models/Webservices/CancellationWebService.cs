@@ -26,7 +26,7 @@ namespace StreamOneInterface.Models.Webservices
             _settings.Save();
             _service = service;
         }
-        public void CancelSubscription(string provision_data, string token)
+        public void CancelSubscription(string token,string provision_data)
         {
             /* Declare method variables
             **/
@@ -59,6 +59,13 @@ namespace StreamOneInterface.Models.Webservices
                 returnJSON = ReadJSONData("failedauthentication.json");
                 /*  Print out the failed json for marketplace listener
                 **/
+
+                /*
+                 * This part of code is taken from StreamOne API documentation where it is...
+                 * ...adviced that return message is returned in console.
+                 * I have strong feeling this should be returned as a part of Request return, but....
+                 * ...as it was not possible to test LIVE I did it in accordance to StreamOne API documentation.
+                 * */
                 Console.WriteLine(returnJSON);
                 return;
             }

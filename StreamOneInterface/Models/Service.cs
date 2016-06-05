@@ -14,28 +14,31 @@ namespace StreamOneInterface.Models
     {
         private readonly ISettings _settings;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IProvisioningWebService _provisioningWebService;
-        private readonly ICancellationWebService _cancellationWebService;
+        //private readonly IProvisioningWebService _provisioningWebService;
+        //private readonly ICancellationWebService _cancellationWebService;
 
         //Constructors
         public Service()
-            : this(new Settings(true), new UnitOfWork(), new ProvisioningWebService(), new CancellationWebService())
+            //: this(new Settings(true), new UnitOfWork(), new ProvisioningWebService(), new CancellationWebService())
+            : this(new Settings(true), new UnitOfWork())
         {
             // Empty
         }
 
-        public Service(Settings settings, IUnitOfWork unitOfWork, IProvisioningWebService provisioningWebService, ICancellationWebService cancellationWebService)
+        //public Service(Settings settings, IUnitOfWork unitOfWork, IProvisioningWebService provisioningWebService, ICancellationWebService cancellationWebService)
+        public Service(Settings settings, IUnitOfWork unitOfWork)
         {
             _settings = settings;
             _unitOfWork = unitOfWork;
-            _provisioningWebService = provisioningWebService;
-            _cancellationWebService = cancellationWebService;
+           // _provisioningWebService = provisioningWebService;
+            //_cancellationWebService = cancellationWebService;
             _settings.Save();
         }
 
         #region Webservice functionality
         public APIFacadeOrder POSTProvisionalOrder(string token, string json)
         {
+            ProvisioningWebService _provisioningWebService = new ProvisioningWebService();
             APIFacadeOrder APIOrder = new APIFacadeOrder();
             APIOrder = _provisioningWebService.ProvisionApp(token, json);
             return APIOrder;
@@ -43,6 +46,7 @@ namespace StreamOneInterface.Models
 
         public void POSTCancellationOrder(string token, string json)
         {
+            CancellationWebService _cancellationWebService = new CancellationWebService();
             _cancellationWebService.CancelSubscription(token, json);
             return;
         }
